@@ -63,7 +63,3 @@ const renderizarBack = (element) => {
 
     backCardElement.appendChild(iconBack);
 }
-
-const flipCard = (element) => {
-    element.classList.add("flip");
-}

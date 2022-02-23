@@ -1,6 +1,45 @@
 const FRONT = "frente-carta";
 const BACK = "atras-carta";
 
+let game = {
+    lockMode: false,
+    firstCard: null,
+    secondCard: null,
+
+    setCard: (id) => {
+        let card = cards.filter(card => card.id == id)[0];
+
+        if (card.flipped || this.lockMode) {
+            return false;
+        }
+
+        if (!game.firstCard) {
+            game.firstCard = card;
+            card.flipped = true;
+            return true;
+        } else {
+            game.secondCard = card;
+            card.flipped = true;
+            game.lockMode = true;
+            return true;
+        }
+
+    },
+
+    checkGame: () => {
+        if (game.firstCard != null && game.secondCard != null && game.firstCard.icon == game.secondCard.icon) {
+            return game.firstCard.icon == game.secondCard.icon
+        }
+    },
+
+    clearCards: () => {
+        game.firstCard = null;
+        game.secondCard = null;
+        game.lockMode = false;
+    },
+
+}
+
 let champs = [
     "Ekko",
     "Elise",
@@ -60,6 +99,30 @@ const iniciarJogo = () => {
     cards = createCards(champs);
     embaralharCartas(cards);
     renderizarCartas(cards);
+}
+
+const flipCard = (element) => {
+    if (game.setCard(element.id)) {
+
+        element.classList.add("flip");
+
+        if (game.checkGame.bind(game)()) {
+            game.clearCards();
+        } else {
+            setTimeout(() => {
+                let firstCard = document.getElementById(game.firstCard.id);
+                let secondCard = document.getElementById(game.secondCard.id);
+
+                game.firstCard.flipped = false;
+                game.secondCard.flipped = false;
+
+                firstCard.classList.remove("flip");
+                secondCard.classList.remove("flip");
+                game.clearCards();
+            }, 1000)
+        };
+
+    }
 }
 
 iniciarJogo();
