@@ -14,17 +14,13 @@ const mostrarCartas = () => {
     setTimeout(desvirarCartas, 5000); // inicia o jogo mostrando todas cartas por 5 segundos
 }
 
-window.onload = () => {
-    mostrarCartas();
-}
-
 const renderizarCartas = (cards) => {
     let tabuleiro = document.getElementById("tabuleiro");
 
-    cards.forEach(card => {
+    cards.forEach((card, i) => {
         let cardElement = document.createElement("div");
         cardElement.id = card.id;
-        cardElement.classList.add("card");
+        cardElement.classList.add("card", "faded");
 
         cardElement.addEventListener("click", () => {
             flipCard(cardElement);
@@ -35,7 +31,17 @@ const renderizarCartas = (cards) => {
         renderizarFrente(card.icon, cardElement)
 
         renderizarBack(cardElement);
+
+        setTimeout(() => {
+            cardElement.classList.remove("faded");
+        }, i * 100);
+
     });
+
+    setTimeout(() => {
+        mostrarCartas();
+    }, cards.length * 100 + 2000);
+
 }
 
 const renderizarFrente = (icon, element) => {

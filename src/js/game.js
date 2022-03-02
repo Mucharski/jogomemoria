@@ -32,6 +32,16 @@ let game = {
         }
     },
 
+    checkEndGame: () => {
+        return cards.filter(card => !card.flipped).length == 0;
+    },
+
+    restartGame: () => {
+        iniciarJogo();
+        let endLayout = document.getElementById("endGame");
+        endLayout.style.display = "none";
+    },
+
     clearCards: () => {
         game.firstCard = null;
         game.secondCard = null;
@@ -98,7 +108,7 @@ const embaralharCartas = (cards) => {
 const iniciarJogo = () => {
     cards = createCards(champs);
     embaralharCartas(cards);
-    renderizarCartas(cards);
+    renderizarCartas(cards)
 }
 
 const flipCard = (element) => {
@@ -108,24 +118,44 @@ const flipCard = (element) => {
 
         if (game.checkGame.bind(game)()) {
             game.clearCards();
+            if (game.checkEndGame()) {
+                let endLayout = document.getElementById("endGame");
+                endLayout.style.display = "flex";
+            }
         } else {
-            setTimeout(() => {
-                let firstCard = document.getElementById(game.firstCard.id);
-                let secondCard = document.getElementById(game.secondCard.id);
+            if (game.secondCard) {
+                setTimeout(() => {
+                    let firstCard = document.getElementById(game.firstCard.id);
+                    let secondCard = document.getElementById(game.secondCard.id);
 
-                game.firstCard.flipped = false;
-                game.secondCard.flipped = false;
+                    game.firstCard.flipped = false;
+                    game.secondCard.flipped = false;
 
-                firstCard.classList.remove("flip");
-                secondCard.classList.remove("flip");
-                game.clearCards();
-            }, 1000)
-        };
+                    firstCard.classList.remove("flip");
+                    secondCard.classList.remove("flip");
+                    game.clearCards();
+                }, 1000)
+            };
+        }
 
     }
 }
 
-iniciarJogo();
+// iniciarJogo();
+
+let btnRestart = document.getElementById("btnRestart");
+
+btnRestart.addEventListener("click", () => {
+    game.restartGame();
+})
+
+let btnIniciar = document.getElementById("btnIniciar");
+btnIniciar.addEventListener("click", () => {
+    iniciarJogo();
+
+    let startDiv = document.getElementById("start");
+    startDiv.style.display = "none";
+})
 
 
 
