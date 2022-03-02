@@ -35,7 +35,8 @@ main {
 }
 
 .frente-carta, .atras-carta {
-    transform: rotateX(0deg); /* arrumar bug que acontece no Firefox que não esconde o backface */
+    transform: rotateX(0deg);
+    /* arrumar bug que acontece no Firefox que não esconde o backface */
     width: 100%;
     height: 100%;
     border-radius: 20px;
@@ -60,7 +61,7 @@ main {
     transform: rotateY(180deg);
 }
 
-.fim-de-jogo, .inicio-de-jogo {
+.fim-de-jogo, .inicio-de-jogo, .acertou, .errou {
     position: absolute;
     left: 0;
     top: 0;
@@ -96,4 +97,10 @@ main {
 .btn-novamente:hover {
     background-color: rgb(12, 105, 0);
     color: rgb(255, 188, 64);
+}
+
+.acertou, .errou {
+    display: none;
+    background-color: transparent;
+    transform: all .5s;
 }

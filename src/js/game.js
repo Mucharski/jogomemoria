@@ -37,9 +37,7 @@ let game = {
     },
 
     restartGame: () => {
-        iniciarJogo();
-        let endLayout = document.getElementById("endGame");
-        endLayout.style.display = "none";
+        location.reload();
     },
 
     clearCards: () => {
@@ -118,12 +116,23 @@ const flipCard = (element) => {
 
         if (game.checkGame.bind(game)()) {
             game.clearCards();
+            let acertou = document.getElementById("acertou");
+            acertou.style.display = "flex";
+
+            setTimeout(() => {
+                acertou.style.display = "none"
+            }, 1000)
+            // fazer função que aparece se foi par ou não
             if (game.checkEndGame()) {
                 let endLayout = document.getElementById("endGame");
                 endLayout.style.display = "flex";
+
             }
         } else {
             if (game.secondCard) {
+                let errou = document.getElementById("errou");
+                errou.style.display = "flex";
+
                 setTimeout(() => {
                     let firstCard = document.getElementById(game.firstCard.id);
                     let secondCard = document.getElementById(game.secondCard.id);
@@ -133,15 +142,17 @@ const flipCard = (element) => {
 
                     firstCard.classList.remove("flip");
                     secondCard.classList.remove("flip");
+
+
+
+                    errou.style.display = "none"
                     game.clearCards();
-                }, 1000)
+                }, 700)
             };
         }
 
     }
 }
-
-// iniciarJogo();
 
 let btnRestart = document.getElementById("btnRestart");
 
