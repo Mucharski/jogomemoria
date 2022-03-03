@@ -20,7 +20,7 @@
             <h6>JOGO DA MEMÓRIA</h6>
         </div>
         <div class="direita">
-            <h6>TENTATIVAS RESTANTES: </h6>
+            <h6>TENTATIVAS RESTANTES: <span id="tentativa"></span></h6>
         </div>
     </header>
 
@@ -41,7 +41,12 @@
 
     <div class="fim-de-jogo" id="endGame">
         <h1>VOCÊ GANHOU!</h1>
-        <button class="btn" id="btnRestart">Jogar Novamente</button>
+        <button class="btn btn-restart" id="btnRestart">Jogar Novamente</button>
+    </div>
+
+    <div class="game-over" id="gameOver">
+        <h1>VOCÊ PERDEU!</h1>
+        <button class="btn btn-restart" id="btnRestart">Jogar Novamente</button>
     </div>
 
     <div class="acertou" id="acertou">

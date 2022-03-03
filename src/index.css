@@ -12,6 +12,8 @@ body {
 header {
     display: flex;
     justify-content: space-between;
+    font-size: 1.8rem;
+    height: 10vh;
 }
 
 main {
@@ -21,6 +23,7 @@ main {
     row-gap: 1.3rem;
     margin: auto;
     justify-items: center;
+    height: 90vh;
 }
 
 .card {
@@ -61,7 +64,7 @@ main {
     transform: rotateY(180deg);
 }
 
-.fim-de-jogo, .inicio-de-jogo, .acertou, .errou {
+.fim-de-jogo, .inicio-de-jogo, .acertou, .errou, .game-over {
     position: absolute;
     left: 0;
     top: 0;
@@ -103,4 +106,8 @@ main {
     display: none;
     background-color: transparent;
     transform: all .5s;
+}
+
+.game-over {
+    color: red;
 }
