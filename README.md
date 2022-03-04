@@ -13,7 +13,7 @@ JavaScript
 # Autor
 **Igor Mucharski**
 
-[LinkedIn](www.linkedin.com/in/igormucharski)
+[LinkedIn](https://www.linkedin.com/in/igormucharski)
 
 # Executar projeto no navegador
 
