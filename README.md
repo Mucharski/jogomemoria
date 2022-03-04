@@ -7,9 +7,9 @@ Projeto criado para colocar em prática alguns conhecimentos que adquiri em curs
 ![Cartas viradas](./assets/2.png)
 ![Cartas desviradas](./assets/3.png)
 # Tecnologias utilizadas
-HTML
-CSS
-JavaScript
+HTML  
+CSS  
+JavaScript  
 # Autor
 **Igor Mucharski**
 
